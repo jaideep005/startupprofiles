@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Selection</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .profile-selection {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-selection button {
+            background-color: #000080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .role-selection {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .role-option {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            width: 45%;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .role-option.selected {
+            border-color: #000080;
+            background-color: #e6f0ff;
+        }
+
+        .role-option:hover {
+            border-color: #000080;
+        }
+
+        .continue-button {
+            background-color: #000080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .continue-button:hover {
+            background-color: #000060;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">Your Complete Ecosystem:</div>
+    <div class="subtitle">Select your Profile Type</div>
+    
+    <div class="profile-selection">
+        <button>STARTUPS</button>
+    </div>
+    
+    <div class="subtitle">Select your Role</div>
+    <div class="role-selection">
+        <div class="role-option" id="dpiitStartup" onclick="selectRole('dpiitStartup')">
+            DPIIT Startup
+        </div>
+        
+        <div class="role-option" id="nonDpiitStartup" onclick="selectRole('nonDpiitStartup')">
+            Non-DPIIT Startup
+        </div>
+    </div>
+    
+    <button class="continue-button" onclick="continueToNext()">Continue</button>
+</div>
+
+<script>
+    let selectedRole = '';
+
+    function selectRole(role) {
+        // Deselect previously selected role
+        if (selectedRole) {
+            document.getElementById(selectedRole).classList.remove('selected');
+        }
+        
+        // Select the new role
+        selectedRole = role;
+        document.getElementById(role).classList.add('selected');
+    }
+
+    function continueToNext() {
+        if (selectedRole) {
+            alert('You selected: ' + (selectedRole === 'dpiitStartup' ? 'DPIIT Startup' : 'Non-DPIIT Startup'));
+            // Logic to move to the next step can be added here
+        } else {
+            alert('Please select a role before continuing.');
+        }
+    }
+</script>
+
+</body>
+</html>
